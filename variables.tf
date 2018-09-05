@@ -32,3 +32,8 @@ variable "tags" {
 variable "hostname_format" {
   default = "network-%[1]d-%[2]s"
 }
+
+# Network Instance IDs
+variable "network_security_group_id" {
+  type = "list"
+}

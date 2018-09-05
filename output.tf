@@ -22,3 +22,8 @@ output "public_cidr" {
 output "private_cidr" {
   value = "${var.private_cidr}"
 }
+
+# Network Instance ID
+output "network_security_group_id" {
+  value = "${var.network_security_group_id}"
+}
