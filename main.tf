@@ -6,9 +6,8 @@ resource "random_id" "id" {
 }
 
 module "nsg" {
-  source = "../terraform-azurerm-nsg"
-
-  # version = "~> 0.0"
+  source = "dcos-terraform/azurerm/nsg"
+  version = "~> 0.0"
 
   dcos_role           = "vnet"
   location            = "${var.location}"
