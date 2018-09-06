@@ -5,17 +5,6 @@ resource "random_id" "id" {
   byte_length = 2
 }
 
-module "nsg" {
-  source  = "dcos-terraform/nsg/azurerm"
-  version = "~> 0.0"
-
-  dcos_role           = "vnet"
-  location            = "${var.location}"
-  resource_group_name = "${var.resource_group_name}"
-  tags                = "${var.tags}"
-  name_prefix         = "${var.name_prefix}"
-}
-
 # Create a virtual network in the web_servers resource group
 resource "azurerm_virtual_network" "vnet" {
   name                = "vnet-${format(var.hostname_format, count.index + 1, var.name_prefix)}"
@@ -28,11 +17,10 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "public" {
-  name                      = "public"
-  address_prefix            = "${var.public_cidr}"
-  virtual_network_name      = "${azurerm_virtual_network.vnet.name}"
-  resource_group_name       = "${var.resource_group_name}"
-  network_security_group_id = "${module.nsg.nsg_id}"
+  name                 = "public"
+  address_prefix       = "${var.public_cidr}"
+  virtual_network_name = "${azurerm_virtual_network.vnet.name}"
+  resource_group_name  = "${var.resource_group_name}"
 }
 
 resource "azurerm_subnet" "private" {
