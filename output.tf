@@ -22,3 +22,28 @@ output "public_cidr" {
 output "private_cidr" {
   value = "${var.private_cidr}"
 }
+
+# Public Subnet ID
+output "public_subnet_id" {
+  value = "${azurerm_subnet.public.id}"
+}
+
+# Private Subnet ID
+output "private_subnet_id" {
+  value = "${azurerm_subnet.private.id}"
+}
+
+# Public Subnet Name
+output "public_subnet_name" {
+  value = "${azurerm_subnet.public.name}"
+}
+
+# Private Subnet Name
+output "private_subnet_name" {
+  value = "${azurerm_subnet.private.name}"
+}
+
+# VNet Name
+output "name" {
+  value = "${azurerm_virtual_network.vnet.name}"
+}
