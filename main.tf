@@ -32,7 +32,7 @@ resource "azurerm_subnet" "public" {
   address_prefix            = "${var.public_cidr}"
   virtual_network_name      = "${azurerm_virtual_network.vnet.name}"
   resource_group_name       = "${var.resource_group_name}"
-  network_security_group_id = "${module.nsg.nsg_name}"
+  network_security_group_id = "${module.nsg.nsg_id}"
 }
 
 resource "azurerm_subnet" "private" {
