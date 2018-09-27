@@ -1,34 +1,31 @@
-![HashiCorp's Terraform](https://cultivatedops-static.s3.amazonaws.com/thirdparty/terraform/logo-50.png)
+[![Build Status](https://jenkins-terraform.mesosphere.com/service/dcos-terraform-jenkins/job/dcos-terraform/job/terraform-azurerm-vnet/job/master/badge/icon)](https://jenkins-terraform.mesosphere.com/service/dcos-terraform-jenkins/job/dcos-terraform/job/terraform-azurerm-vnet/job/master/)
 
-This repository is a [Terraform](https://terraform.io/) Module for azurerm virtual machine instances
 
-The module creates AzureRM virtual machine instances
+## Inputs
 
-# Usage
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| hostname_format | Format the hostname inputs are index+1, region, cluster_name | string | `network-%[1]d-%[2]s` | no |
+| location | location | string | - | yes |
+| name_prefix | Cluster Name | string | - | yes |
+| private_cidr | private cidr | string | `10.32.4.0/22` | no |
+| public_cidr | public cidr | string | `10.32.0.0/22` | no |
+| resource_group_name | resource group name | string | - | yes |
+| tags | Add custom tags to all resources | map | `<map>` | no |
+| vnet_cidr | vnet cidr | string | `10.32.0.0/16` | no |
 
-Add the module to your Terraform resources like so:
+## Outputs
 
-```
-module "terraform-azurerm-instance" {
-  source = "./terraform-module-terraform-azurerm-instance"
-  arg1 = "foo"
-}
-```
+| Name | Description |
+|------|-------------|
+| name | VNet Name |
+| name_prefix | Cluster Name |
+| private_cidr | Private address prefix |
+| private_subnet_id | Private Subnet ID |
+| private_subnet_name | Private Subnet Name |
+| public_cidr | Public address prefix |
+| public_subnet_id | Public Subnet ID |
+| public_subnet_name | Public Subnet Name |
+| resource_group_name | Resource Group Name |
+| vnet_cidr | VNet CIDR |
 
-Then, load the module using `terraform get`.
-
-# Options
-
-This module supports a number of configuration options:
-
-| option    | description |
-|-----------|-|
-| `arg1`    | argument #1 |
-
-# Outputs
-
-This module supports a number of outputs:
-
-| output   | description |
-|----------|-|
-| `output` | value of the `resource.name.attr` resource  |
