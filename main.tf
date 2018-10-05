@@ -30,7 +30,7 @@ resource "azurerm_virtual_network" "vnet" {
   location            = "${var.location}"
   resource_group_name = "${var.resource_group_name}"
 
-  tags = "${merge(var.tags, map("Name", var.cluster_name),
+  tags = "${merge(var.tags, map("Name", var.cluster_name,
                                 "Cluster", var.cluster_name)}"
 }
 
