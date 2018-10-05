@@ -1,19 +1,7 @@
 # VNet CIDR
-variable "vnet_cidr" {
+variable "subnet_range" {
   description = "vnet cidr"
-  default     = "10.32.0.0/16"
-}
-
-# Public address prefix
-variable "public_cidr" {
-  description = "public cidr"
-  default     = "10.32.0.0/22"
-}
-
-# Private address prefix
-variable "private_cidr" {
-  description = "private cidr"
-  default     = "10.32.4.0/22"
+  default     = "172.31.0.0/16"
 }
 
 # Location (region)
@@ -22,7 +10,7 @@ variable "location" {
 }
 
 # Cluster Name
-variable "name_prefix" {
+variable "cluster_name" {
   description = "Cluster Name"
 }
 
@@ -36,10 +24,4 @@ variable "tags" {
   description = "Add custom tags to all resources"
   type        = "map"
   default     = {}
-}
-
-# Format the hostname inputs are index+1, region, name_prefix
-variable "hostname_format" {
-  description = "Format the hostname inputs are index+1, region, cluster_name"
-  default     = "network-%[1]d-%[2]s"
 }
