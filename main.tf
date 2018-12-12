@@ -11,7 +11,7 @@
  * ```hcl
  * module "dcos-vnet" {
  *   source  = "dcos-terraform/vnet/azurerm"
- *   version = "~> 0.1"
+ *   version = "~> 0.1.0"
  *
  *   location            = "West US"
  *   subnet_range        = "10.32.4.0/22"
