@@ -1,22 +1,22 @@
 # VNet CIDR
 variable "subnet_range" {
-  description = "vnet cidr"
+  description = "Private IP space to be used in CIDR format"
   default     = "172.31.0.0/16"
 }
 
 # Location (region)
 variable "location" {
-  description = "location"
+  description = "Azure Region"
 }
 
 # Cluster Name
 variable "cluster_name" {
-  description = "Cluster Name"
+  description = "Name of the DC/OS cluster"
 }
 
 # Resource Group Name
 variable "resource_group_name" {
-  description = "resource group name"
+  description = "Name of the azure resource group"
 }
 
 # Add special tags to the resources created by this module
