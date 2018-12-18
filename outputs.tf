@@ -1,5 +1,5 @@
 output "subnet_id" {
-  description = "private subnet id"
+  description = "Subnet ID"
   value       = "${azurerm_subnet.dcos.id}"
 }
 
