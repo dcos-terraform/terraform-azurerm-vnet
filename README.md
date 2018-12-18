@@ -34,6 +34,6 @@ module "dcos-vnet" {
 
 | Name | Description |
 |------|-------------|
-| subnet_id | private subnet id |
+| subnet_id | Subnet ID |
 | subnet_name | public subnet name |
 
