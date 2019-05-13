@@ -19,21 +19,20 @@ module "dcos-vnet" {
 }
 ```
 
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| cluster_name | Name of the DC/OS cluster | string | - | yes |
-| location | Azure Region | string | - | yes |
-| resource_group_name | Name of the azure resource group | string | - | yes |
-| subnet_range | Private IP space to be used in CIDR format | string | `172.31.0.0/16` | no |
+| cluster\_name | Name of the DC/OS cluster | string | n/a | yes |
+| location | Azure Region | string | n/a | yes |
+| resource\_group\_name | Name of the azure resource group | string | n/a | yes |
+| subnet\_range | Private IP space to be used in CIDR format | string | `"172.31.0.0/16"` | no |
 | tags | Add custom tags to all resources | map | `<map>` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| subnet_id | Subnet ID |
-| subnet_name | public subnet name |
+| subnet\_id | Subnet ID |
+| subnet\_name | public subnet name |
 
