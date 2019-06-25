@@ -27,7 +27,7 @@ module "dcos-vnet" {
 | location | Azure Region | string | n/a | yes |
 | resource\_group\_name | Name of the azure resource group | string | n/a | yes |
 | name\_prefix | Name Prefix | string | `""` | no |
-| subnet\_range | Private IP space to be used in CIDR format | string | `"172.31.0.0/16"` | no |
+| subnet\_range | Private IP space to be used in CIDR format | list | `<list>` | no |
 | tags | Add custom tags to all resources | map | `<map>` | no |
 
 ## Outputs
