@@ -27,7 +27,6 @@ locals {
   cluster_name = "${var.name_prefix != "" ? "${var.name_prefix}-${var.cluster_name}" : var.cluster_name}"
 }
 
-# Create a virtual network in the web_servers resource group
 resource "azurerm_virtual_network" "vnet" {
   name                = "vnet-${local.cluster_name}"
   address_space       = "${var.subnet_range}"
@@ -39,9 +38,8 @@ resource "azurerm_virtual_network" "vnet" {
 }
 
 resource "azurerm_subnet" "dcos" {
-  count                = "${length(var.subnet_range)}"
-  name                 = "dcos-${count.index}"
-  address_prefix       = "${element(var.subnet_range, count.index)}"
+  name                 = "dcos-${local.cluster_name}"
+  address_prefix       = "${var.subnet_range}"
   virtual_network_name = "${azurerm_virtual_network.vnet.name}"
   resource_group_name  = "${var.resource_group_name}"
 }
