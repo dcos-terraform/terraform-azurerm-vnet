@@ -33,6 +33,9 @@ module "dcos-vnet" {
 
 | Name | Description |
 |------|-------------|
+| resource\_group\_name | Name of the azure resource group |
 | subnet\_id | Subnet ID |
 | subnet\_name | public subnet name |
+| vnet\_id | ID of the VNET |
+| vnet\_name | Name of the VNET |
 
