@@ -9,7 +9,7 @@ output "subnet_name" {
 }
 
 output "resource_group_name" {
-  description = "Resource group name"
+  description = "Name of the azure resource group"
   value       = "${var.resource_group_name}"
 }
 
