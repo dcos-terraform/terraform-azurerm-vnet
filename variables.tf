@@ -11,6 +11,11 @@ variable "cluster_name" {
   description = "Name of the DC/OS cluster"
 }
 
+variable "name_prefix" {
+  description = "Name Prefix"
+  default     = ""
+}
+
 variable "resource_group_name" {
   description = "Name of the azure resource group"
 }
