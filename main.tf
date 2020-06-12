@@ -30,7 +30,7 @@ locals {
 
 resource "azurerm_virtual_network" "vnet" {
   name                = "vnet-${local.cluster_name}"
-  address_space       = var.subnet_range
+  address_space       = [var.subnet_range]
   location            = var.location
   resource_group_name = var.resource_group_name
 
