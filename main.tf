@@ -21,25 +21,31 @@
  * ```
  */
 
-provider "azurerm" {}
+provider "azurerm" {
+}
 
 locals {
-  cluster_name = "${var.name_prefix != "" ? "${var.name_prefix}-${var.cluster_name}" : var.cluster_name}"
+  cluster_name = var.name_prefix != "" ? "${var.name_prefix}-${var.cluster_name}" : var.cluster_name
 }
 
 resource "azurerm_virtual_network" "vnet" {
   name                = "vnet-${local.cluster_name}"
-  address_space       = ["${var.subnet_range}"]
-  location            = "${var.location}"
-  resource_group_name = "${var.resource_group_name}"
+  address_space       = [var.subnet_range]
+  location            = var.location
+  resource_group_name = var.resource_group_name
 
-  tags = "${merge(var.tags, map("Name", var.cluster_name,
-                                "Cluster", var.cluster_name))}"
+  tags = merge(
+    var.tags,
+    {
+      "Name"    = var.cluster_name
+      "Cluster" = var.cluster_name
+    },
+  )
 }
 
 resource "azurerm_subnet" "dcos" {
   name                 = "dcos-${local.cluster_name}"
-  address_prefix       = "${var.subnet_range}"
-  virtual_network_name = "${azurerm_virtual_network.vnet.name}"
-  resource_group_name  = "${var.resource_group_name}"
+  address_prefix       = var.subnet_range
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  resource_group_name  = var.resource_group_name
 }
